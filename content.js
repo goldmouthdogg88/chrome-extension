@@ -2,13 +2,20 @@
 
 window.onload = function () {
   //alert('sending data!');
-  var location = window.location;
-  json = JSON.stringify(location);
+  var currentUrl = window.location.href;
+  json = JSON.stringify({
+    url: currentUrl,
+  });
   var xhr = new XMLHttpRequest();
-  //  xhr.open('POST', 'https://localhost/process_post?myQuery=' + location , true);
+
   xhr.open("POST", "https://134.68.176.201:9000/web_history", true);
-  xhr.send(null);
+  xhr.send(json);
 };
+
+// When I get bi-directional communication with the browser
+//  xhr.open('POST', 'https://localhost/process_post?myQuery=' + location , true);
+
+// We can start to implement this sort of code above, where I can send a query to the browser.
 
 function url() {
   if (window.location.href == "data:text/html,chromewebdata") {
