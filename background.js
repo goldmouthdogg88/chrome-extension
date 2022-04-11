@@ -51,18 +51,15 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     // xhr.send();
     var http = new XMLHttpRequest();
     var url = "https://134.68.176.201:9000/web_history";
-    info = {};
+
     let data = {
       uri: window.location.href,
       title: document.title,
       uri: window.location.href,
       url: window.location.hostname,
-      timestamp: captureTimeData(new Date()), // incorporate captureTimeData() function
+      timestamp: new Date(), // DO NOT!! incorporate captureTimeData() function
     };
-    var params =
-      // 'topic=' + data.topic + '&' +
-      // 'note=' + data.note + '&' +
-      "uri=" + data.uri + "&" + "timestamp=" + data.timestamp;
+    var params = JSON.stringify(data);
 
     http.open("POST", url, true);
 
