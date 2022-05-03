@@ -1,13 +1,15 @@
 // content.js
 
 window.onload = function () {
-  //alert('sending data!');
-  var location = window.location;
-  json = JSON.stringify(location);
   var xhr = new XMLHttpRequest();
-  //  xhr.open('POST', 'https://localhost/process_post?myQuery=' + location , true);
-  xhr.open("POST", "https://134.68.176.201:9000/web_history", true);
-  xhr.send(null);
+  const url = window.location.href;
+  xhr.open("POST", `https://localhost:9000/web_history`, true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.onload = function () {
+    // do something to response
+    console.log(this.responseText);
+  };
+  xhr.send(`title=${document.title}&url=${url}&date=${new Date()}`);
 };
 
 function url() {

@@ -50,7 +50,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     // xhr.open("POST", "http://192.168.1.144/web_history/", true);
     // xhr.send();
     var http = new XMLHttpRequest();
-    var url = "https://134.68.176.201:9000/web_history";
+    var url = "https://localhost:9000/web_history";
     info = {};
     let data = {
       uri: window.location.href,
